@@ -1,24 +1,65 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| lastname           | string | null: false               |
+| firstname          | string | null: false               |
+| lastname_kana      | string | null: false               |
+| firstname_kana     | string | null: false               |
 
-Things you may want to cover:
+### Assosiation
 
-* Ruby version
+- has_many :items
+- has_many :purchases
+- has_one :shipping
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## itemsテーブル
 
-* Database initialization
+| Colum       | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| image       | text       | null: false                    |
+| item_name   | string     | null: flase                    |
+| description | text       | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Assosiation
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :purchase
 
-* Deployment instructions
 
-* ...
+## purchasesテーブル
+
+| Colum       | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| shipping    | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
+
+### Assosiation
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping
+
+## shippingsテーブル
+
+| Colum       | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| postalcode  | string     | null: false                    |
+| city        | string     | null: false                    |
+| address     | string     | null: false                    |
+| apartment   | string     |                                |
+| phone       | string     | null: false                    |
+| user        | references | null: false, foreign_key: true |
+
+
+### Assosiation
+
+- belongs_to :user
+- belongs_to :purchase
