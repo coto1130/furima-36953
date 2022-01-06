@@ -9,6 +9,7 @@
 | firstname          | string | null: false               |
 | lastname_kana      | string | null: false               |
 | firstname_kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Assosiation
 
@@ -20,12 +21,17 @@
 
 ## itemsテーブル
 
-| Colum       | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| image       | text       | null: false                    |
-| item_name   | string     | null: flase                    |
-| description | text       | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Colum                | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| item_name            | string     | null: flase                    |
+| item_description     | text       | null: false                    |
+| item_categoty        | string     | null: false                    |
+| item_status          | string     | null: false                    |
+| item_shipping_fee    | string     | null: false                    |
+| item_prefecture      | string     | null: false                    |
+| item_shipping_date   | string     | null: false                    |
+| item_price           | string     | null: false                    |
+| user                 | references | null: false, foreign_key: true |
 
 ### Assosiation
 
@@ -37,7 +43,6 @@
 
 | Colum       | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| shipping    | references | null: false, foreign_key: true |
 | item        | references | null: false, foreign_key: true |
 | user        | references | null: false, foreign_key: true |
 
@@ -52,11 +57,13 @@
 | Colum       | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | postalcode  | string     | null: false                    |
+| prefecture  | string     | null: false                    |
 | city        | string     | null: false                    |
 | address     | string     | null: false                    |
 | apartment   | string     |                                |
 | phone       | string     | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| purchase    | references | null: false, foreign_key: true |
+
 
 
 ### Assosiation
