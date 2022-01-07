@@ -2,7 +2,7 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false, unique: true |
+| nickname           | string | null: false,              |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | lastname           | string | null: false               |
@@ -15,7 +15,6 @@
 
 - has_many :items
 - has_many :purchases
-- has_one :shipping
 
 
 
@@ -25,12 +24,12 @@
 | -------------------- | ---------- | ------------------------------ |
 | item_name            | string     | null: flase                    |
 | item_description     | text       | null: false                    |
-| item_categoty        | string     | null: false                    |
-| item_status          | string     | null: false                    |
-| item_shipping_fee    | string     | null: false                    |
-| item_prefecture      | string     | null: false                    |
-| item_shipping_date   | string     | null: false                    |
-| item_price           | string     | null: false                    |
+| category_id          | integer    | null: false                    |
+| status_id            | integer    | null: false                    |
+| shipping_fee_id      | integer    | null: false                    |
+| prefecture_id        | integer    | null: false                    |
+| shipping_date_id     | integer    | null: false                    |
+| item_price           | integer    | null: false                    |
 | user                 | references | null: false, foreign_key: true |
 
 ### Assosiation
@@ -54,19 +53,18 @@
 
 ## shippingsテーブル
 
-| Colum       | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| postalcode  | string     | null: false                    |
-| prefecture  | string     | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| apartment   | string     |                                |
-| phone       | string     | null: false                    |
-| purchase    | references | null: false, foreign_key: true |
+| Colum          | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| postalcode     | string     | null: false                    |
+| prefecture_id  | string     | null: false                    |
+| city           | string     | null: false                    |
+| address        | string     | null: false                    |
+| apartment      | string     |                                |
+| phone          | string     | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 
 
 ### Assosiation
 
-- belongs_to :user
 - belongs_to :purchase
